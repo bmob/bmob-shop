@@ -1,0 +1,49 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--
+        Base application theme, dependent on API level. This theme is replaced
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+    -->
+    <style name="AppBaseTheme" parent="android:Theme.Light">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
+
+    <!-- Application theme. -->
+    <style name="AppTheme" parent="AppBaseTheme">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+	
+    <style name="baseBtn">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/color_white</item>
+         <item name="android:layout_margin">25dp</item>
+        <item name="android:padding">12dp</item>
+    </style>
+    <style name="avator">
+        <item name="android:layout_height">@dimen/avator_main_width</item>
+        <item name="android:layout_width">@dimen/avator_main_width</item>
+    </style>
+        <style name="white_layout">
+    			<item name="android:background">@color/color_white</item>
+    			<item name="android:layout_marginTop">@dimen/text_paddingSmall</item>
+    			<item name="android:padding">@dimen/text_paddingNormal</item>
+    			<item name="android:orientation">vertical</item>
+    			<item name="android:clickable">true</item>
+    </style>
+      <!-- 间隔线 -->
+   <style name="lines">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/lines_height</item>
+        <item name="android:background">@color/color_grey</item>
+        <item name="android:layout_marginLeft">@dimen/text_paddingNormal_light</item>
+        <item name="android:layout_marginRight">@dimen/text_paddingNormal_light</item>
+    </style>
+     <style name="white_layout.noMarginTop">
+    			<item name="android:layout_marginTop">0dp</item>
+    </style>
+</resources>

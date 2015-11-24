@@ -1,0 +1,37 @@
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+	<!-- 字体大小 -->
+    <dimen name="textSize_normal_light">15sp</dimen>
+    <dimen name="textSize_normal">18sp</dimen>
+    <dimen name="textSize_small">12sp</dimen>
+    <dimen name="textSize_moreNormal">21sp</dimen>
+    <dimen name="textSize_title">25sp</dimen>
+    <dimen name="textSize_large">35sp</dimen>
+    
+    <!-- 控件边距专区 -->
+    <dimen name="text_paddingSmall">5dp</dimen>
+    <dimen name="text_paddingNormal">10dp</dimen>
+    <dimen name="text_paddingNormal_light">17dp</dimen>
+    <dimen name="text_paddingLarge_litter">34dp</dimen>
+    <dimen name="text_paddingLarge">45dp</dimen>
+	<!-- 头像属性 -->     
+    <dimen name="avator_main_width">57dp</dimen>
+    <dimen name="avator_borderWidth">2dp</dimen>
+    
+     <dimen name="chooseType_height">30dp</dimen>
+     <dimen name="shop_chooseType_height">25dp</dimen>
+    
+     <dimen name="slidngmenu_text_padding">50dp</dimen>
+     <dimen name="shop_item_height">62dp</dimen>
+     
+     <dimen name="slidingmenu_width">80dp</dimen>
+     
+    <dimen name="lines_height">1px</dimen>
+    
+    <dimen name="actionbar_height">48dip</dimen>
+    <dimen name="actionbar_item_height">40dip</dimen>
+    <dimen name="actionbar_item_width">40dip</dimen>
+</resources>

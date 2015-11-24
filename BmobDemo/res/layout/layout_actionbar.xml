@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:background="@color/color_blue_deep"
+    android:gravity="center"
+    android:orientation="horizontal" >
+	<TextView 
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:id="@+id/actionBar_showText"
+	    android:paddingLeft="10dp"
+	    android:textColor="@color/color_white"
+	    android:textSize="18sp"
+	    />
+</LinearLayout>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:padding="20dp"
+    android:orientation="vertical" >
+    
+	<Button 
+	    style="@style/baseBtn"
+	    android:background="@color/color_blue_deep"
+	    android:id="@+id/shop_BtnBuy"
+	    android:text="购买商品" />   
+	     <!-- background最好是一个selector -->
+	<Button 
+	  style="@style/baseBtn"
+	    android:text="我的小店"
+	     android:id="@+id/shop_BtnShop"
+	    android:background="@color/color_red" />
+	<Button 
+	    style="@style/baseBtn"
+	    android:id="@+id/shop_BtnOrder"
+	    android:background="@color/color_green_light"
+	    android:text="我的订单"  />
+	<Button 
+	    style="@style/baseBtn"
+	    android:id="@+id/shop_BtnAddGoods"
+	    android:background="@color/color_orange"
+	    android:text="添加商品"  />
+	<Button 
+	    style="@style/baseBtn"
+	    android:id="@+id/shop_BtnLogout"
+	    android:background="@color/color_orange"
+	    android:text="登出"  />
+</LinearLayout>
