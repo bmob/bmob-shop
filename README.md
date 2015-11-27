@@ -31,7 +31,6 @@
 ###2.Base类
 #####在.base包下新建一个类：`BaseFragmentActivity`，并且继承自`FragmentActivity`，因为在后面要使用到Fragment
 	public abstract class BaseFragmentActivity extends FragmentActivity{
-	
 	public FragmentManager mfragmentManager;
 	public FragmentTransaction mfragmentTransaction;
 	protected void onCreate(Bundle arg0) {
