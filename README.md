@@ -7,21 +7,21 @@
 #第一章 初识BMOB
 ###本小节主要讲解BMOB的登录及注册及后台数据库、自定义User类等应用.
 #####1.首先新建一个项目:`BmobDemo`，包名设为`bmob.store.demo`，然后再建立如下包:
-	bmob.store.demo.ui(存放ui主界面)
+		bmob.store.demo.ui(存放ui主界面)
 
-	bmob.store.demo.base(存放基础类)
+		bmob.store.demo.base(存放基础类)
 
-	bmob.store.demo.fragment(存放fragment)
+		bmob.store.demo.fragment(存放fragment)
 
-	bmob.store.demo.config(存放静态string字段)
+		bmob.store.demo.config(存放静态string字段)
 
-	bmob.store.demo.bean(存放实体类)
+		bmob.store.demo.bean(存放实体类)
 
-	bmob.store.demo.adapter（存放适配器）  
+		bmob.store.demo.adapter（存放适配器）  
 
-	bmob.store.demo.utlis（存放常用工具类）
+		bmob.store.demo.utlis（存放常用工具类）
 
-	bmob.store.demo.view（存放自定义view）
+		bmob.store.demo.view（存放自定义view）
 ###1.1 导入bmob libs
 `本demo版本：3.4.1`
 #####下载最新的`android sdk`，并将`Bmob sdk_xx.jar`放入`workplace/BmobDemo/libs`下
@@ -66,67 +66,67 @@
 ###3.1 在.ui包下新建一个类:`SplashActivity`
 #####在layout文件夹下新建一个布局文件:`activty_splash`
 #####布局内容：
-	<?xml version="1.0" encoding="utf-8"?>
-	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical" >
-    <ImageView 
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_launcher"/>
-	</LinearLayout>
+		<?xml version="1.0" encoding="utf-8"?>
+		<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:gravity="center"
+		android:orientation="vertical" >
+		<ImageView 
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:src="@drawable/ic_launcher"/>
+		</LinearLayout>
 #####在`getLayoutViewID()`方法中返回该布局文件
-	protected int getLayoutViewID() {
-		return R.layout.activity_splash;
-	}
+		protected int getLayoutViewID() {
+			return R.layout.activity_splash;
+		}
 #####`初始化Bmob SDK`：
-	protected void findViews() {
-		Bmob.initialize(this,MyConfig.APP_ID);
-	}
+		protected void findViews() {
+			Bmob.initialize(this,MyConfig.APP_ID);
+		}
 ###3.2 创建一个`自定义BmobUser`的实体类，在.bean包下新建类:`MyUser`，继承自`BmobUser`，并自定义一些属性
-	public class MyUser extends BmobUser implements Serializable{
-	private Integer age;//年龄
-	private Boolean sex;//性别
-	private BmobFile avator;//用于存放头像文件
-	private Boolean is_openShop;//是否开了小店
-	
-	...setter and getter...
-	}
+		public class MyUser extends BmobUser implements Serializable{
+		private Integer age;//年龄
+		private Boolean sex;//性别
+		private BmobFile avator;//用于存放头像文件
+		private Boolean is_openShop;//是否开了小店
+		
+		...setter and getter...
+		}
 #####需要说明的是上传Bmob后台所需的数据类型必须是`包装类`，比如`Integer`，`Boolean`等
 #####这里没有写`userName`和`passWord`属性是因为这些都是BmobUser自带的，可以直接set和get
 #####在`SplashActivity`中新建一个handler线程，用于`跳转主界面或登录界面`
-	public static final int HOME =1;//主界面
-	public static final int LOGIN = 2;//登录界面
-	//handler线程
-	Handler mHandler = new Handler(){
-		public void handleMessage(Message msg) {
-			super.handleMessage(msg);
-			switch (msg.what) {
-			case HOME:
-				//跳转到主页
-				startAnimActivity(MainActivity.class);
-				finish();
-				break;
-			case LOGIN:
-				//跳转到登录界面
-				startAnimActivity(LoginActivity.class);
-				finish();
-				break;
-			default:
-				break;
+		public static final int HOME =1;//主界面
+		public static final int LOGIN = 2;//登录界面
+		//handler线程
+		Handler mHandler = new Handler(){
+			public void handleMessage(Message msg) {
+				super.handleMessage(msg);
+				switch (msg.what) {
+				case HOME:
+					//跳转到主页
+					startAnimActivity(MainActivity.class);
+					finish();
+					break;
+				case LOGIN:
+					//跳转到登录界面
+					startAnimActivity(LoginActivity.class);
+					finish();
+					break;
+				default:
+					break;
+				}
 			}
-		}
-	};
+		};
 #####声明一个MyUser:`myuser`，然后判断是否为`null`,null为没有登录过。
-	MyUser myuser;
-	myuser = BmobUser.getCurrentUser(this,MyUser.class);
-		if(myuser == null){
-			mHandler.sendEmptyMessageDelayed(LOGIN,2000);
-		}else{
-			mHandler.sendEmptyMessageDelayed(HOME,2000);
-		}
+		MyUser myuser;
+		myuser = BmobUser.getCurrentUser(this,MyUser.class);
+			if(myuser == null){
+				mHandler.sendEmptyMessageDelayed(LOGIN,2000);
+			}else{
+				mHandler.sendEmptyMessageDelayed(HOME,2000);
+			}
 ###3.3 登录界面
 #####3.3.1新建一个布局文件:`activity_login.xml`
 ![](http://i12.tietuku.com/c16f725c21adbffb.png)
@@ -194,15 +194,15 @@
 		}
 
 #####3.修改androidMainfest.xml文件设置SplashActivity为主活动，代码如下：
-	<activity
-            android:name="bmob.store.demo.ui.SplashActivity"
-            android:label="@string/app_name" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-	</activity>
+		<activity
+	            android:name="bmob.store.demo.ui.SplashActivity"
+	            android:label="@string/app_name" >
+	            <intent-filter>
+	                <action android:name="android.intent.action.MAIN" />
+	
+	                <category android:name="android.intent.category.LAUNCHER" />
+	            </intent-filter>
+		</activity>
 #####4.注册界面：RegisterActivity,布局界面和登录是一样的。
 	public class RegisterActivity extends BaseFragmentActivity{
 
