@@ -1000,10 +1000,10 @@
 
 #####用include方法可以查询出关联数据（但不能查询多对多）
 #####效果如图：
-![](http://i5.tietuku.com/4f5837864a09be15.png)
+![](images/buy_goods.png)
 #####（支付界面）
 #####1.新建布局文件：activity_pay.xml
-![](http://i12.tietuku.com/6b762665a78053e7.png)
+![](images/activity_pay.png)
 #####2.新建类：PayActivity
 	public class PayActivity extends BaseFragmentActivity implements OnClickListener{
 	
@@ -1060,7 +1060,7 @@
 	}
 #####具体回调的函数的含义请参考官方文档
 #####如图：
-![](http://i5.tietuku.com/f09b7af519a44858.png)
+![](images/pay.png)
 #####4.我们需要新建一个Order订单实体类，来供我们查询订单的情况
 	public class Order extends BmobObject implements Serializable{
 	
@@ -1102,7 +1102,7 @@
 	}
 #####5.创建类：MyOrderActivity(点击主页中我的订单按钮之后的界面)
 #####新建一个布局文件：activity_myorder
-![](http://i5.tietuku.com/dbfdbe60774133e7.png)
+![](images/order_activity.png)
 #####对应的类：MyOrderActivity:
 	public class MyOrderActivity extends BaseFragmentActivity{
 	
@@ -1312,8 +1312,8 @@
 #####开店人账号：`bmob` 密码：`123456` pushId:`bmobshop`
 #####用户账号：`bmobtest` 密码：`123456` pushId:`bmobpushtest`
 #####后台数据：
-![](http://i5.tietuku.com/68d837b83aea895f.png)
+![](images/data1.png)
 #####效果如图（模拟器是用户，真机是店主）：
-![](http://i5.tietuku.com/7548f1c61c51741b.png)
-![](http://i5.tietuku.com/d4f01bf8ec2a9e43.png)
+![](images/user_buy.png)
+![](images/shop_ok.png)
 #####个推功能讲解完毕。
