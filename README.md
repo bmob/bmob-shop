@@ -30,69 +30,38 @@
 	public static Static APP_ID="你的应用APP_ID";
 ###2.Base类
 #####在.base包下新建一个类：`BaseFragmentActivity`，并且继承自`FragmentActivity`，因为在后面要使用到Fragment
-	public abstract class BaseFragmentActivity extends FragmentActivity{
-
-	public FragmentManager mfragmentManager;
-
-	public FragmentTransaction mfragmentTransaction;
-
-	protected void onCreate(Bundle arg0) {
-
+		public abstract class BaseFragmentActivity extends FragmentActivity{
+		public FragmentManager mfragmentManager;
+		public FragmentTransaction mfragmentTransaction;
+		protected void onCreate(Bundle arg0) {
 		super.onCreate(arg0);
-
 		setContentView(getLayoutViewID());
-
 		findViews();
-
 		setupViews();
-
 		setLinstener();
-
-	}
-
-		public void back(View view){
-
-		finish();
-
 		}
-
-	/**
-
-	 *不含数据的activity跳转
-
-	 *@param cla 需要跳转的类
-
-	 */
-
-	public void startAnimActivity(Class<?> cla) {
-
+		public void back(View view){
+		finish();
+		}
+		/**
+		 *不含数据的activity跳转
+		 *@param cla 需要跳转的类
+	 	*/
+		public void startAnimActivity(Class<?> cla) {
 		this.startActivity(new Intent(this, cla));
-
-	}
-
-	/**
-
-	 *含数据的activity跳转
-
-	 *@param intent 含有bundle或extra的intent
-
-	 */
-
-	public void startAnimActivity(Intent intent) {
-
+		}
+		/**
+		 *含数据的activity跳转
+		 *@param intent 含有bundle或extra的intent
+		 */
+		public void startAnimActivity(Intent intent) {
 		this.startActivity(intent);
-
-	}
-
-	protected abstract int getLayoutViewID();
-
-	protected abstract void findViews();
-
-	protected abstract void setupViews();
-
-	protected abstract void setLinstener();
-
-	}
+		}
+		protected abstract int getLayoutViewID();
+		protected abstract void findViews();
+		protected abstract void setupViews();
+		protected abstract void setLinstener();
+		}
 ###3.UI界面
 ###3.1 在.ui包下新建一个类:`SplashActivity`
 #####在layout文件夹下新建一个布局文件:`activty_splash`
@@ -163,66 +132,66 @@
 ![](http://i12.tietuku.com/c16f725c21adbffb.png)
 #####3.3.2在.ui包下新建类：`LoginActivity`
 #####LoginActivity.java：
-	public class LoginActivity extends BaseFragmentActivity implements OnClickListener{
-		Button login_BtnLogin;
-		TextView login_tvRegister,login_tvFound;
-		EditText login_edUsername,login_edPassword;
-
-	protected int getLayoutViewID() {
-			return R.layout.activity_login;
-	}
-	protected void findViews() {
-		login_tvFound = (TextView)findViewById(R.id.login_tvFound);
-		login_tvRegister = (TextView)findViewById(R.id.login_tvRegister);
-		login_BtnLogin = (Button)findViewById(R.id.login_BtnLogin);
-		login_edUsername = (EditText)findViewById(R.id.login_edUsername);
-		login_edPassword = (EditText)findViewById(R.id.login_edPassword);
-	}
-	protected void setLinstener() {
-		login_BtnLogin.setOnClickListener(this);
-		login_tvRegister.setOnClickListener(this);
-	}
-	protected void setupViews() {
+			public class LoginActivity extends BaseFragmentActivity implements OnClickListener{
+				Button login_BtnLogin;
+				TextView login_tvRegister,login_tvFound;
+				EditText login_edUsername,login_edPassword;
 		
-	}
-	public void onClick(View v) {
-		switch (v.getId()) {
-		case R.id.login_tvRegister:
-				register();
-			break;
-		case R.id.login_BtnLogin:
-				login();
-			break;
-		}
-	}
-	public void register(){
-		startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
-	}
-	public void login(){
-		String getStrUsername = login_edUsername.getText().toString().trim();
-		String getStrPassword = login_edPassword.getText().toString().trim();
-		if(!getStrUsername.equals("")&&!getStrPassword.equals("")){
-			final ProgressDialog pd = ProgressDialog.show(LoginActivity.this, "提示", "正在登陆。。。");
-			MyUser myUser = new MyUser();
-			myUser.setUsername(getStrUsername);
-			myUser.setPassword(getStrPassword);
-			myUser.login(LoginActivity.this, new SaveListener() {
-				public void onSuccess() {
-					pd.dismiss();
-					//跳转到主界面
-					startAnimActivity(MainActivity.class);
-					finish();
-					//还可以显示欢迎toast
+			protected int getLayoutViewID() {
+					return R.layout.activity_login;
+			}
+			protected void findViews() {
+				login_tvFound = (TextView)findViewById(R.id.login_tvFound);
+				login_tvRegister = (TextView)findViewById(R.id.login_tvRegister);
+				login_BtnLogin = (Button)findViewById(R.id.login_BtnLogin);
+				login_edUsername = (EditText)findViewById(R.id.login_edUsername);
+				login_edPassword = (EditText)findViewById(R.id.login_edPassword);
+			}
+			protected void setLinstener() {
+				login_BtnLogin.setOnClickListener(this);
+				login_tvRegister.setOnClickListener(this);
+			}
+			protected void setupViews() {
+				
+			}
+			public void onClick(View v) {
+				switch (v.getId()) {
+				case R.id.login_tvRegister:
+						register();
+					break;
+				case R.id.login_BtnLogin:
+						login();
+					break;
 				}
-				public void onFailure(int code, String message) {
-					pd.dismiss();
-					//可根据code判断是用户密码错误还是网络连接失败
-					ToastFactory.show(LoginActivity.this, "登录失败！账户密码错误！");
+			}
+			public void register(){
+				startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
+			}
+			public void login(){
+				String getStrUsername = login_edUsername.getText().toString().trim();
+				String getStrPassword = login_edPassword.getText().toString().trim();
+				if(!getStrUsername.equals("")&&!getStrPassword.equals("")){
+					final ProgressDialog pd = ProgressDialog.show(LoginActivity.this, "提示", "正在登陆。。。");
+					MyUser myUser = new MyUser();
+					myUser.setUsername(getStrUsername);
+					myUser.setPassword(getStrPassword);
+					myUser.login(LoginActivity.this, new SaveListener() {
+						public void onSuccess() {
+							pd.dismiss();
+							//跳转到主界面
+							startAnimActivity(MainActivity.class);
+							finish();
+							//还可以显示欢迎toast
+						}
+						public void onFailure(int code, String message) {
+							pd.dismiss();
+							//可根据code判断是用户密码错误还是网络连接失败
+							ToastFactory.show(LoginActivity.this, "登录失败！账户密码错误！");
+						}
+					});
 				}
-			});
+			}
 		}
-	}
-}
 
 #####3.修改androidMainfest.xml文件设置SplashActivity为主活动，代码如下：
 	<activity
