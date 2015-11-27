@@ -45,15 +45,15 @@
 		finish();
 	}
 	/**
-	 * 不含数据的activity跳转
-	 * @param cla 需要跳转的类
+	 *不含数据的activity跳转
+	 *@param cla 需要跳转的类
 	 */
 	public void startAnimActivity(Class<?> cla) {
 		this.startActivity(new Intent(this, cla));
 	}
 	/**
-	 * 含数据的activity跳转
-	 * @param intent 含有bundle或extra的intent
+	 *含数据的activity跳转
+	 *@param intent 含有bundle或extra的intent
 	 */
 	public void startAnimActivity(Intent intent) {
 		this.startActivity(intent);
@@ -62,8 +62,7 @@
 	protected abstract void findViews();
 	protected abstract void setupViews();
 	protected abstract void setLinstener();
-}
-
+	}
 ###3.UI界面
 ###3.1 在.ui包下新建一个类:`SplashActivity`
 #####在layout文件夹下新建一个布局文件:`activty_splash`
