@@ -527,7 +527,7 @@
 ###流程：开店——创建商品——购买——产生订单
 #####2.1 新建一个用户，账号为`bmob`，密码`123456`
 #####2.2 创建一个布局文件:`realese_shop_activity`
-![](http://i5.tietuku.com/7c77e929f2f25b0f.png)
+![](/images/realese_shop.png)
 #####2.3 在.ui包下新建一个类：`RealeseShopActivity`
 	public class RealeseShopActivity extends BaseFragmentActivity implements OnClickListener{
 	//圆形头像
