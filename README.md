@@ -27,7 +27,7 @@
 #####下载最新的`android sdk`，并将`Bmob sdk_xx.jar`放入`workplace/BmobDemo/libs`下
 ###1.2 在BMOB官网后台新建一个应用,名为`Bmobshop`　
 ###1.3 接下来在`bmob.store.demo.config`包下新建一个类，名为`MyConfig`，将刚刚新建好的应用的APP_ID存放进去
-	public static Static APP_ID="你的应用APP_ID";
+		public static Static APP_ID="你的应用APP_ID";
 ###2.Base类
 #####在.base包下新建一个类：`BaseFragmentActivity`，并且继承自`FragmentActivity`，因为在后面要使用到Fragment
 		public abstract class BaseFragmentActivity extends FragmentActivity{
