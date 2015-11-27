@@ -24,12 +24,11 @@ public class SplashActivity extends BaseFragmentActivity{
 	
 	protected void findViews() {
 		Bmob.initialize(this,MyConfig.APP_ID);
-		myuser = BmobUser.getCurrentUser(this,MyUser.class);
-		if(myuser == null)
-			Log.i("log", "user == null");
+		
 	}
 	
 	protected void setupViews() {
+		myuser = BmobUser.getCurrentUser(this,MyUser.class);
 		if(myuser == null){
 			mHandler.sendEmptyMessageDelayed(LOGIN,2000);
 		}else{

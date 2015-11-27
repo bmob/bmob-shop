@@ -11,9 +11,9 @@ import bmob.store.demo.bean.Order;
 
 public class MyOrderActivity extends BaseFragmentActivity{
 	
-	ListView orderListView;
-	OrderAdapter orderAdapter;
-	ArrayList<Order> getlist;
+	ListView orderListView;//订单的listview
+	OrderAdapter orderAdapter;//订单适配器
+	ArrayList<Order> getlist;//订单数据集合
 	protected int getLayoutViewID() {
 		return R.layout.activity_myorder;
 	}

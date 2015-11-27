@@ -17,12 +17,12 @@ import bmob.store.demo.view.CircleImageView;
 
 public class BuyGoodsActivity extends BaseFragmentActivity implements OnClick{
 	
-	CircleImageView shop_avator;
-	TextView shop_name;
-	ListView goods_list;
-	Shop getshop;
-	ArrayList<Goods> getlist;
-	GoodsAdapter goodsAdapter;
+	CircleImageView shop_avator;//头像
+	TextView shop_name;//店铺名字
+	ListView goods_list;//商品列表listview
+	Shop getshop;//传进来的Shop对象
+	ArrayList<Goods> getlist;//从主界面传进来的goods集合
+	GoodsAdapter goodsAdapter;//适配器
 	
 	protected int getLayoutViewID() {
 		return R.layout.activity_goods_list;
@@ -40,13 +40,14 @@ public class BuyGoodsActivity extends BaseFragmentActivity implements OnClick{
 		goodsAdapter = new GoodsAdapter(this, getlist);
 		goodsAdapter.setAdapterOnclickLinstener(this);
 		goods_list.setAdapter(goodsAdapter);
-				shop_name.setText(getshop.getShopName());
+		shop_name.setText(getshop.getShopName());
+		//ImageLoader图片加载
 		ImageViewUtil.setUrlImageView(getshop.getShopAvator().getFileUrl(this),shop_avator);
 	}
 	protected void setLinstener() {
 		
 	}
-
+	//adapter里面的onclik接口
 	public void onclick(int position) {
 		//跳转到支付界面
 		Intent intent = new Intent(this,PayActivity.class);
@@ -54,5 +55,4 @@ public class BuyGoodsActivity extends BaseFragmentActivity implements OnClick{
 		intent.putExtra("price",getlist.get(position).getGoods_price());
 		startActivity(intent);
 	}
-
 }

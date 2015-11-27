@@ -20,9 +20,6 @@ public abstract class BaseFragmentActivity extends FragmentActivity{
 		setupViews();
 		setLinstener();
 	}
-	public void ShowLog(String msg){
-		Log.i("config",msg);
-	}
 	public void back(View view){
 		finish();
 	}

@@ -18,7 +18,6 @@ import bmob.store.demo.ui.PayActivity;
 
 public class GoodsAdapter extends BaseAdapter{
 	
-	
 	private ArrayList<Goods> datalist;
 	private Context context;
 	private LayoutInflater mInflater; 

@@ -38,7 +38,7 @@ public class RealeseGoodsActivity extends BaseFragmentActivity{
 		
 	protected void setLinstener() {
 		realese_OK.setOnClickListener(new OnClickListener() {
-			public void onClick(View v) {
+			public void onClick(View v) {	
 				final ProgressDialog pd = ProgressDialog.show(RealeseGoodsActivity.this, "","ÕýÔÚ²Ù×÷....");
 				MyUser mu = BmobUser.getCurrentUser(RealeseGoodsActivity.this,MyUser.class);
 				BmobQuery<Shop> bs = new BmobQuery<Shop>();

@@ -7,7 +7,6 @@ import cn.bmob.v3.datatype.BmobFile;
 
 public class Goods extends BmobObject implements Serializable{
 	
-	
 	private Float goods_price;//º€∏Ò
 	private Integer Stock;//ø‚¥Ê
 	private String info;//ΩÈ…‹

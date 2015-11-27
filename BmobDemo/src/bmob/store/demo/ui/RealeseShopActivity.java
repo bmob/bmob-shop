@@ -30,7 +30,9 @@ import cn.bmob.v3.listener.UpdateListener;
 import cn.bmob.v3.listener.UploadFileListener;
 
 public class RealeseShopActivity extends BaseFragmentActivity implements OnClickListener{
+	//圆形头像
 	CircleImageView shop_avator;
+	//发布按钮
 	Button realeseOK;
 	protected int getLayoutViewID() {
 		return R.layout.realese_shop_activity;
@@ -40,16 +42,14 @@ public class RealeseShopActivity extends BaseFragmentActivity implements OnClick
 		realeseOK = (Button)findViewById(R.id.release_ok);
 		
 	}
-	
 	protected void setupViews() {
 		
 	}
-	
 	protected void setLinstener() {
 		shop_avator.setOnClickListener(this);
 		realeseOK.setOnClickListener(this);
 	}
-	
+	//跳转到系统相册界面
 	public void go_changeFromAlbum()
 	{
 		Intent intent = new Intent(Intent.ACTION_PICK, null);
@@ -57,7 +57,7 @@ public class RealeseShopActivity extends BaseFragmentActivity implements OnClick
 			MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
 		startActivityForResult(intent, MyConfig.REQUESTCODE_TAKE_ALBUM);
 	}
-	
+	//获取SD卡路径
 	public String getSDPath(){
 		File sdDir = null;
 		boolean sdCardExist = Environment.getExternalStorageState()
@@ -72,11 +72,10 @@ public class RealeseShopActivity extends BaseFragmentActivity implements OnClick
     private String filePath = "";
     //照片存储的目录
     private String avator_cacheDir = getSDPath()+MyConfig.AVATOR_CACHE_DIR;
-    
+    //照片名字
     private String camera_Name = "";
     /**
      * 跳转到相机界面
-     * @param dirpath 需要一个sd卡目录来存放照片
      */
     public void go_CameraActivity()
     {
@@ -121,11 +120,12 @@ public class RealeseShopActivity extends BaseFragmentActivity implements OnClick
 			}
 	    }
     }
+    //用于存储处理照片后的bitmap对象
+    Bitmap bb = null;
     /**
      * 处理裁剪后的照片
      * @param data
      */
-    Bitmap bb = null;
     public void cropBack(Intent data){
     	bb = data.getExtras().getParcelable("data");//获取裁剪后的Bitmap对象
 		//在照片目录创建正常大小的bitmap,这个是裁剪后的bitmap
@@ -147,7 +147,7 @@ public class RealeseShopActivity extends BaseFragmentActivity implements OnClick
 				Shop s = new Shop();
 				final MyUser u = BmobUser.getCurrentUser(RealeseShopActivity.this,MyUser.class);
 				Log.i("id",u.getObjectId());
-				s.setMyuser(u);
+				s.setMyuser(u);//设置关联关系
 				s.setAdress("重庆市");
 				s.setShopAvator(bf);
 				s.setShopName("Bmob store");
@@ -182,7 +182,7 @@ public class RealeseShopActivity extends BaseFragmentActivity implements OnClick
 		});
     }
    /**
-    * 裁剪
+    * 进入裁剪界面
     */
 	public void go_crop_pic(Uri fileUri) {
 		Intent intent = new Intent("com.android.camera.action.CROP");
@@ -198,10 +198,12 @@ public class RealeseShopActivity extends BaseFragmentActivity implements OnClick
 		intent.putExtra("return-data", true);
 		startActivityForResult(intent, MyConfig.REQUESTCODE_TAKE_CROP);
 	}
+	//点击事件
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.realese_addavatorBtn:
-			//显示dialog，分拍照和相册两种模式
+			//按下添加头像按钮
+			//显示dialog，分拍照和相册两种选择
 			new AlertDialog.Builder(RealeseShopActivity.this)
 			.setItems(new String[]{"相机","相册"},new DialogInterface.OnClickListener() {
 				public void onClick(DialogInterface dialog, int which) {
@@ -216,7 +218,7 @@ public class RealeseShopActivity extends BaseFragmentActivity implements OnClick
 			}).show();
 			break;
 		case R.id.release_ok:
-			//这里应该判断EditText是否为空以及判断身份证号是否合格,由于时间关系就直接写死了
+			//发布店铺
 			if(bb != null)
 				createShop();
 			else 

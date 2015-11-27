@@ -31,16 +31,11 @@ import cn.bmob.v3.listener.FindListener;
 public class ShopFragment extends BaseFragment implements OnClickListener{
 
 	Button shop_buy,shop_myShop,shop_myOrder,shop_addGoods,logout;
-	MainActivity ma;
 	private static final int BUY_GOODS = 100;
 	private static final int ORDER = 200;
 	MyUser u ;
 	protected int getLayoutID() {
 		return R.layout.fragment_shop;
-	}
-	public void onAttach(Activity activity) {
-		super.onAttach(activity);
-		ma = (MainActivity)activity;
 	}
 	protected void findViews() {
 		Log.i("shopFragment","shop_Fragment");
@@ -93,9 +88,11 @@ public class ShopFragment extends BaseFragment implements OnClickListener{
 			super.handleMessage(msg);
 			switch (msg.what) {
 			case BUY_GOODS:
+				//查询商品信息
 				queryGoods();
 				break;
 			case ORDER:
+				//查询订单信息
 				queryOrders();
 				break;
 			}
@@ -104,7 +101,7 @@ public class ShopFragment extends BaseFragment implements OnClickListener{
 	public void queryOrders(){
 		BmobQuery<Order> bo = new BmobQuery<Order>();
 		bo.order("-createdAt");//降序
-		bo.findObjects(ma, new FindListener<Order>() {
+		bo.findObjects(getActivity(), new FindListener<Order>() {
 			public void onSuccess(List<Order> list) {
 				if(list.size()!=0){
 					Intent i = new Intent(getActivity(),MyOrderActivity.class);
@@ -122,6 +119,7 @@ public class ShopFragment extends BaseFragment implements OnClickListener{
 	public void queryGoods(){
 		BmobQuery<Goods> gs = new BmobQuery<Goods>();
 		gs.include("goods_shop");
+		gs.addWhereEqualTo("MyUser", u);
 		gs.findObjects(getActivity(),new FindListener<Goods>() {
 			public void onSuccess(List<Goods> list) {
 				if(list.size()!=0){
@@ -135,6 +133,5 @@ public class ShopFragment extends BaseFragment implements OnClickListener{
 			public void onError(int code, String message) {
 			}
 		});
-		
 	}
 }

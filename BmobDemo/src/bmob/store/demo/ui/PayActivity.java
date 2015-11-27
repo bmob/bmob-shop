@@ -82,18 +82,20 @@ public class PayActivity extends BaseFragmentActivity implements OnClickListener
 		}
 	};
 	public void payZFB(){
+		//第一个参数是价格，为double类型
+		//第二个参数是订单详情
+		//第三个参数是回调接口
 		new BmobPay(this).pay(get_price, "测试单号：123456", new PayListener() {
 			public void unknow() {
 				
 			}
-			
 			public void succeed() {
 				//创建订单
 				createOrder();
 			}
 			
 			public void orderId(String s) {
-				
+				//订单id，这是支付宝产生的
 			}
 			
 			public void fail(int code, String message) {

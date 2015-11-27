@@ -88,13 +88,12 @@ public class ImageViewUtil {
 			}
 	 }
 	/**
-	 * saveBitmap
 	 * 
-	 * @param @param filename---完整的路径格�?-包含目录以及文件�?
-	 * @param @param bitmap
-	 * @param @param isDelete --是否只留�?�?
-	 * @return void
-	 * @throws
+	 * @param dirpath 路径
+	 * @param filename 文件名
+	 * @param bitmap
+	 * @param display
+	 * @param isDelete
 	 */
 	public static void saveBitmap(String dirpath,String filename,Bitmap bitmap, int display,boolean isDelete) {
 		File dir = new File(dirpath);
